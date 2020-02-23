@@ -20,7 +20,7 @@ contract Ballot {
 
     /// Create a new ballot with $(_numProposals) different proposals.
     constructor(uint8 _numProposals) public {
-        chairperson = msg.sender;   
+        chairperson = msg.sender;
         voters[chairperson].weight = 1;
         proposals.length = _numProposals;
     }
