@@ -15,3 +15,5 @@ npm install
 3. Interace with contract using `truffle console`
 
 4. `truffle test` - runs tests in election.js
+
+5. `npm run dev` - open up browser
