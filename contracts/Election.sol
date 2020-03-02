@@ -9,6 +9,8 @@ contract Election {
         uint voteCount; // 2
     }
 
+    address public admin;
+
     // Store Candidates
     // Like a hash with key value pair
     mapping(uint => Candidate) public candidates;
@@ -21,8 +23,15 @@ contract Election {
     // Constructor
     // function Election () public {
     constructor() public {
+        admin = msg.sender; // make the deployer of the contract the admin
         addCandidate("Candidate 1");
         addCandidate("Candidate 2");
+    }
+
+    // admin adds candidate to the Candidate mapping
+    function adminAddCandidate(string memory _name) public {
+        require(msg.sender == admin, "Only admin can add candidates");
+        addCandidate(_name);
     }
 
     // Adds Candidate to Election

@@ -100,7 +100,7 @@ castVote: function() {
   }).catch(function(err) {
     console.error(err);
   });
-}
+};
 
 
 $(function() {
