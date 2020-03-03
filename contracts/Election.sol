@@ -17,6 +17,11 @@ contract Election {
     // Keep track of number of candidates (also for iteration)
     uint public candidatesCount;
 
+     // voted event
+    event votedEvent (
+        uint indexed _candidateId
+    );
+
     // accounts that voted
     mapping(address => bool) public voters;
 
@@ -24,8 +29,8 @@ contract Election {
     // function Election () public {
     constructor() public {
         admin = msg.sender; // make the deployer of the contract the admin
-        addCandidate("Candidate 1");
-        addCandidate("Candidate 2");
+        // addCandidate("Candidate 1");
+        // addCandidate("Candidate 2");
     }
 
     // admin adds candidate to the Candidate mapping
@@ -53,5 +58,8 @@ contract Election {
 
         // increase candidate's voteCount
         candidates[_candidateId].voteCount++;
+
+        // trigger voted event
+        emit votedEvent(_candidateId);
     }
 }
